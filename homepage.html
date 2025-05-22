@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guidance</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Career Guidance</h1>
+        <p id="welcomeText"></p>
+        <button onclick="startQuiz()">Get Started</button>
+        <button id="logout">Logout</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const storedUser = JSON.parse(localStorage.getItem("userData")) || {};
+            document.getElementById("welcomeText").innerText =
+                storedUser.username ? `Welcome, ${storedUser.username}! Are you ready to find your perfect career match after engineering?`
+                    : "Welcome! Are you ready to find your perfect career match after engineering?";
+
+            document.getElementById("logout").addEventListener("click", function () {
+                localStorage.removeItem("isLoggedIn");
+                location.href = "index.html";
+            });
+        });
+
+
+        function startQuiz() {
+            location.href = "quiz.html";
+        }
+    </script>
+
+</body>
+
+</html>

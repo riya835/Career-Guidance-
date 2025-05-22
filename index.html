@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup / Signin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2 id="formTitle">Sign Up</h2>
+        <form id="authForm">
+            <input type="text" id="username" placeholder="Enter username" required>
+            <input type="password" id="password" placeholder="Enter password" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="toggleForm">Already have an account? <a href="#">Sign in</a></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("authForm");
+            const toggleText = document.getElementById("toggleForm");
+            const formTitle = document.getElementById("formTitle");
+
+            let isSignup = true;
+
+            toggleText.addEventListener("click", function () {
+                isSignup = !isSignup;
+                formTitle.innerText = isSignup ? "Sign Up" : "Sign In";
+                toggleText.innerHTML = isSignup ? 'Already have an account? <a href="#">Sign in</a>' : 'Don\'t have an account? <a href="#">Sign up</a>';
+            });
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+                const storedUser = JSON.parse(localStorage.getItem("userData"));
+
+                if (isSignup) {
+                    if (storedUser && storedUser.username === username) {
+                        alert("Account already exists. Please sign in.");
+                        formTitle.innerText = "Sign In";
+                        toggleText.innerHTML = 'Don\'t have an account? <a href="#">Sign up</a>';
+                        isSignup = false;
+                    } else {
+                        localStorage.setItem("userData", JSON.stringify({ username, password }));
+                        alert("Signup successful! Please sign in.");
+                        formTitle.innerText = "Sign In";
+                        toggleText.innerHTML = 'Don\'t have an account? <a href="#">Sign up</a>';
+                        isSignup = false;
+                    }
+                } else {
+                    if (!storedUser || storedUser.username !== username || storedUser.password !== password) {
+                        alert("Invalid credentials! Please try again.");
+                    } else {
+                        alert("Login successful!");
+                        localStorage.setItem("isLoggedIn", "true");
+                        location.href = "homepage.html";
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

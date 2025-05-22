@@ -1,0 +1,109 @@
+/* General Styles */
+body { 
+    font-family: 'Poppins', sans-serif; 
+    text-align: center; 
+    background: #f8e1e7; 
+    margin: 0; 
+    padding: 0;
+}
+
+.container { 
+    background: white; 
+    padding: 30px; 
+    margin: 50px auto; 
+    width: 400px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+}
+
+/* Inputs and Buttons */
+input, button, select { 
+    width: 100%; 
+    padding: 10px; 
+    margin: 8px 0; 
+    border-radius: 8px; 
+    border: 1px solid #ddd; 
+    font-size: 1em;
+}
+
+button { 
+    background: #f4a6b8; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    font-size: 1em; 
+}
+
+button:hover { 
+    background: #d988a1; 
+}
+
+/* Error Messages */
+.error { 
+    color: red; 
+    font-size: 0.9em; 
+}
+
+/* Hidden Elements */
+.hidden { 
+    display: none; 
+}
+
+/* Loading Spinner */
+.spinner { 
+    border: 4px solid #f3f3f3; 
+    border-top: 4px solid #f4a6b8; 
+    border-radius: 50%; 
+    width: 30px; 
+    height: 30px; 
+    animation: spin 1s linear infinite; 
+    margin: 10px auto; 
+}
+
+@keyframes spin { 
+    100% { transform: rotate(360deg); } 
+}
+
+/* 💡 Homepage Styling */
+h1 {
+    font-size: 2.5em;
+    color: #d82f5f;
+    margin-bottom: 10px;
+}
+
+#welcomeText {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#logout {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 10px; /* Centers it and adds space from other elements */
+    background: #d82f5f;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+#logout:hover {
+    background: #b3244b;
+}
+
+
+/* 💡 Quiz Styling */
+.question-block {
+    background: #ffe6eb;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+/* 💡 Result Page Styling */
+.container h2 {
+    color: #d82f5f;
+}
+
+button {
+    margin: 10px 0;
+}

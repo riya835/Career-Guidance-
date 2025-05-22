@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Your Career Quiz Results</h2>
+        <p id="career-role">Loading...</p> <!-- Default message -->
+
+        <button onclick="retakeQuiz()">Retake Quiz</button>
+        <button onclick="goHome()">Home</button> <!-- Home button restored -->
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let careerRole = localStorage.getItem("careerRole");
+
+            if (careerRole) {
+                document.getElementById("career-role").innerText = "Your Recommended Career Role is: " + careerRole;
+            } else {
+                document.getElementById("career-role").innerText = "No quiz results found. Please retake the quiz.";
+            }
+        });
+
+        function retakeQuiz() {
+            localStorage.removeItem("careerRole"); // Clear stored result
+            location.href = "quiz.html"; // Redirect to quiz page
+        }
+
+        function goHome() {
+            location.href = "homepage.html"; // Redirect to homepage
+        }
+    </script>
+
+</body>
+</html>
